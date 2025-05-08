@@ -31,7 +31,6 @@ export default function RootLayout({ children }) {
           <Breadcrumb />
           {children}
         </main>
-      
         <Footer />
       </body>
     </html>
