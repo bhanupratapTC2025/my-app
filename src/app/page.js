@@ -5,6 +5,7 @@ import FrequentlyBought from '@/components/home/FrequentlyBought'
 import BannerSlider from '@/components/home/ImageSlider'
 import OfferCards from '@/components/home/OfferCards'
 import PerfectPare from '@/components/home/PerfectPare'
+import ShopByBrands from '@/components/home/ShopByBrands'
 import StoreDirection from '@/components/home/StoreDirection'
 import React from 'react'
 
@@ -18,6 +19,7 @@ function page() {
       <FrequentlyBought/>
       <PerfectPare/>
       <AiDirection/>
+      <ShopByBrands/>
     </div>
   )
 
