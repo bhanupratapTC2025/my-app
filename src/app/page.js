@@ -1,4 +1,5 @@
 
+import AiDirection from '@/components/home/AiDirection'
 import TopCategory from '@/components/home/category/TopCategory'
 import FrequentlyBought from '@/components/home/FrequentlyBought'
 import BannerSlider from '@/components/home/ImageSlider'
@@ -16,6 +17,7 @@ function page() {
       <StoreDirection/>
       <FrequentlyBought/>
       <PerfectPare/>
+      <AiDirection/>
     </div>
   )
 
