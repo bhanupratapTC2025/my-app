@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, Search } from 'lucide-react';
 
 // Menu configuration as an array
@@ -21,10 +21,34 @@ const menuItems = [
 
 const UpperNavbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [scrollDirection, setScrollDirection] = useState('up');
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    // Detect scroll direction
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > lastScrollY) {
+                // Downward scroll
+                setScrollDirection('down');
+            } else {
+                // Upward scroll
+                setScrollDirection('up');
+            }
+            setLastScrollY(window.scrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
 
     return (
-        <div className="bg-white shadow-sm border-b border-gray-200 px-4 md:px-12 py-2 flex items-center justify-between text-gray-700 text-sm font-medium">
-
+        <div
+            className={`bg-white shadow-sm border-b border-gray-200 px-4 md:px-12 py-2 flex items-center justify-between text-gray-700 text-sm font-medium transition-transform duration-300 ${scrollDirection === 'down' ? '-translate-y-full' : ''
+                }`}
+        >
             {/* Left: Any Query */}
             <div className="hidden sm:block">
                 <span className="text-blue-600 hover:underline cursor-pointer">Any Query?</span>

@@ -4,13 +4,13 @@ import Image from 'next/image';
 
 const bannerImages = {
     '/eyeglasses': '/banners/eyeglasses.jpg',
-    '/sunglasses': '/banners/sunglasses.jpg',
-    'power-sunglasses': '/banners/power-sunglasses.jpg',
-    'computer-glasses': '/banners/computer-glasses.jpg',
-    '/contact-lenses': '/banners/contact-lenses.jpg',
-    '/hearing-aid': '/banners/hearing-aid.jpg',
-    'accessories': '/banners/accessories.jpg',
-    'brands': '/banners/brands.jpg',
+    '/sunglasses': '/banners/eyeglasses.jpg',
+    '/power-sunglasses': '/banners/eyeglasses.jpg',
+    '/computer-glasses': '/banners/eyeglasses.jpg',
+    '/contact-lenses': '/banners/eyeglasses.jpg',
+    '/hearing-aids': '/banners/eyeglasses.jpg',
+    '/accessories': '/banners/eyeglasses.jpg',
+    '/brands': '/banners/eyeglasses.jpg',
     default: '/banners/default.jpg',
 };
 
@@ -19,13 +19,13 @@ const Banner = ({ title, subtitle }) => {
     const backgroundImage = bannerImages[pathname] || bannerImages.default;
 
     return (
-        <div className="relative h-44 w-[100%] mx-auto  overflow-hidden shadow-lg">
+        <div className="relative  h-60 w-[100%]   mx-auto  overflow-hidden shadow-lg">
             <Image
                 src={backgroundImage}
                 alt="Banner"
                 layout="fill"
-                objectFit="cover"
-                className="brightness-75"
+                objectFit="fill"
+                className="brightness-75 "
                 priority
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
