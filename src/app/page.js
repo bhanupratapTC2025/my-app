@@ -1,4 +1,5 @@
 
+import Accordian from '@/components/home/Accordian'
 import AiDirection from '@/components/home/AiDirection'
 import TopCategory from '@/components/home/category/TopCategory'
 import FrequentlyBought from '@/components/home/FrequentlyBought'
@@ -20,6 +21,7 @@ function page() {
       <PerfectPare/>
       <AiDirection/>
       <ShopByBrands/>
+      <Accordian/>
     </div>
   )
 
