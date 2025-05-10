@@ -79,26 +79,59 @@
 
 
 
+// import Link from 'next/link';
+
+// export default function ProductCard({ product }) {
+//     return (
+//         <div className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow bg-white h-full flex flex-col">
+//             <div className="aspect-square mb-4">
+//                 <img
+//                     src={product.image}
+//                     alt={product.name}
+//                     className="w-full h-full object-contain rounded"
+//                 />
+//             </div>
+//             <h3 className="font-semibold line-clamp-2 mb-1">{product.name}</h3>
+//             <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
+//             <div className="mt-auto">
+//                 <p className="font-bold text-blue-600">₹{product.price}</p>
+//                 <p className="text-xs text-gray-500 mt-1">
+//                     {product.gender} • {product.frameColor}
+//                 </p>
+//             </div>
+//         </div>
+//     );
+// }
+
+
+
+
+
+
 import Link from 'next/link';
 
 export default function ProductCard({ product }) {
     return (
-        <div className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow bg-white h-full flex flex-col">
-            <div className="aspect-square mb-4">
-                <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-contain rounded"
-                />
+        <Link href={`/eyewear/${product.id}`} className="block">
+            <div className="border p-4 rounded-lg shadow hover:shadow-lg transition-all">
+                <div className="aspect-square mb-4">
+                    <img
+                        src={product.images?.[0] || product.image}
+                        alt={product.name}
+                        className="w-full h-full object-contain"
+                    />
+                </div>
+                <h3 className="font-semibold line-clamp-2">{product.name}</h3>
+                <p className="text-sm text-gray-600">{product.brand}</p>
+                <div className="mt-2 flex items-center gap-2">
+                    <span className="font-bold">₹{product.price}</span>
+                    {product.originalPrice && (
+                        <span className="text-sm text-gray-500 line-through">
+                            ₹{product.originalPrice}
+                        </span>
+                    )}
+                </div>
             </div>
-            <h3 className="font-semibold line-clamp-2 mb-1">{product.name}</h3>
-            <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
-            <div className="mt-auto">
-                <p className="font-bold text-blue-600">₹{product.price}</p>
-                <p className="text-xs text-gray-500 mt-1">
-                    {product.gender} • {product.frameColor}
-                </p>
-            </div>
-        </div>
+        </Link>
     );
 }
