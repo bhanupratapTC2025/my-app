@@ -67,7 +67,7 @@ const Breadcrumb = () => {
     });
 
     return (
-        <div className="p-4  bg-gray-100 text-gray-800">
+        <div className="p-4 bg-gray-100 text-gray-800">
             <div className="text-sm">
                 <Link href="/" className="text-blue-600 font-bold hover:underline">
                     Home

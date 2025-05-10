@@ -1,7 +1,12 @@
+"use client";
 import Banner from "@/components/Banner";
+
+import ProductFilter from "@/components/sunglass/ProductFilter";
+
 import React from "react";
 
-export default function sunglasses() {
+export default function Sunglasses() {
+
   return (
     <>
       <Banner
@@ -10,6 +15,7 @@ export default function sunglasses() {
       />
       <h1>Sunglasses</h1>
       <p>This is the sunglasses page.</p>
+      <ProductFilter category="Sunglasses"/>
     </>
   );
 }

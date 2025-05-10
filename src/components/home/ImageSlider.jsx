@@ -11,6 +11,7 @@ import { useRef, useEffect } from 'react';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
+
 const slides = [
     {
         src: '/slider/eyeSlideImg1.webp',
@@ -35,6 +36,7 @@ export default function BannerSlider() {
 
     return (
         <div className="w-full h-[70vh] relative">
+            
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, EffectFade]}
                 navigation={{
