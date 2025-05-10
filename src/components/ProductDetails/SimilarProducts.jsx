@@ -1,5 +1,6 @@
-import ProductCard from '@/components/ProductCard';
-import productsData from '@/data/products.json';
+
+import productsData from '@/components/data/products.json';
+import ProductCard from '@/components/main-products/ProductCard';
 
 export default function SimilarProducts({ currentProduct }) {
     const similarProducts = productsData[currentProduct.category]
