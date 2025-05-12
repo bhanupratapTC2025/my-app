@@ -1,8 +1,65 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import productData from "@/components/data/products.json";
+import { Heart } from "lucide-react";
 
-const selectedBrand = "Fastrack"; // Replace with dynamic value if needed
+const selectedBrand = "Fastrack"; // You can make this dynamic later
+
+const ProductCard = ({ product }) => {
+  const [liked, setLiked] = useState(false);
+
+  return (
+    <div
+      key={product.id}
+      className="relative  rounded-lg p-2 shadow-lg bg-white hover:shadow-md hover:scale-3d transition-all duration-300 flex flex-col items-center group text-sm"
+    >
+      {/* Like Button */}
+      <button
+        className="absolute top-2 right-2 text-red-500 hover:text-red-600 z-10"
+        onClick={() => setLiked(!liked)}
+        aria-label="Like product"
+      >
+        <Heart
+          size={16}
+          className={`transition-transform ${
+            liked ? "fill-current" : "fill-transparent"
+          }`}
+        />
+      </button>
+
+      {/* Product Image */}
+      <Image
+        src={product.image}
+        alt={product.name}
+        width={120}
+        height={90}
+        className="rounded-md object-contain"
+      />
+
+      {/* Name & Brand */}
+      <h2 className="font-medium mt-2 text-center">{product.name}</h2>
+      <p className="text-gray-500 italic text-xs text-center mt-1">
+        {product.brand}
+      </p>
+
+      {/* Description */}
+      <p className="text-gray-600 text-xs text-center mt-1 line-clamp-2">
+        {product.description || "No description"}
+      </p>
+
+      {/* Price & Button */}
+      <div className="flex items-center justify-between mt-2 w-full px-2">
+        <span className="text-green-600 font-semibold text-sm">
+          ₹{product.price}
+        </span>
+        <button className="bg-blue-600 text-white px-2 py-0.5 rounded hover:bg-blue-700 text-xs">
+          Add
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const FastrackAll = () => {
   const sections = Object.entries(productData)
@@ -20,57 +77,29 @@ const FastrackAll = () => {
     .filter((section) => section.products.length > 0);
 
   return (
-    <main className="space-y-20 p-4">
+    <main className="space-y-16 p-4">
       {sections.map((section, index) => (
         <section
           key={index}
           className={`flex flex-col md:flex-row ${
             index % 2 === 1 ? "md:flex-row-reverse" : ""
-          } items-start justify-between gap-8 bg-white p-6 rounded-lg shadow-md`}
+          } items-start justify-between gap-6 bg-white p-4 rounded-lg shadow-md`}
         >
           {/* Image Section */}
           <div className="w-full md:w-1/2">
             <Image
               src={section.imageSrc}
               alt={`${section.title} Image`}
-              width={600}
-              height={400}
-              className="rounded-xl object-cover w-full h-auto"
+              width={500}
+              height={300}
+              className="rounded-lg object-cover w-full h-auto"
             />
           </div>
 
           {/* Product Cards */}
-          <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
             {section.products.map((product) => (
-              <div
-                key={product.id}
-                className="border rounded-xl p-4 shadow-md bg-gray-50 flex flex-col items-center"
-              >
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={200}
-                  height={150}
-                  className="rounded-md"
-                />
-                <h2 className="text-lg font-semibold mt-3 text-center">
-                  {product.name}
-                </h2>
-                <p className="text-sm text-gray-500 mt-1 text-center italic">
-                  Brand: {product.brand}
-                </p>
-                <p className="text-sm text-gray-600 text-center mt-1">
-                  {product.description || "No description available"}
-                </p>
-                <div className="flex items-center justify-between mt-3 w-full px-4">
-                  <span className="text-green-600 font-bold text-base">
-                    ₹{product.price}
-                  </span>
-                  <button className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 text-sm">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </section>

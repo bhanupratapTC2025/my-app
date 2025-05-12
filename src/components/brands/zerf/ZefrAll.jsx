@@ -4,7 +4,7 @@ import Image from "next/image";
 import productData from "@/components/data/products.json";
 import { Heart } from "lucide-react";
 
-const selectedBrand = "Titan"; // You can make this dynamic later
+const selectedBrand = "Zefr"; // You can make this dynamic later
 
 const ProductCard = ({ product }) => {
   const [liked, setLiked] = useState(false);
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const TitanAll = () => {
+const ZefrAll = () => {
   const sections = Object.entries(productData)
     .map(([categoryName, products]) => {
       const filteredProducts = products
@@ -108,4 +108,4 @@ const TitanAll = () => {
   );
 };
 
-export default TitanAll;
+export default ZefrAll;
