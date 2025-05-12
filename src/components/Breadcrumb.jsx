@@ -74,11 +74,11 @@ const Breadcrumb = () => {
                 </Link>
                 {crumbs}
             </div>
-            {mainSlug && (
+            {/* {mainSlug && (
                 <h2 className="text-xl text-blue-800 font-bold mt-4 capitalize">
                     {mainSlug}
                 </h2>
-            )}
+            )} */}
         </div>
     );
 };

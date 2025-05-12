@@ -28,7 +28,8 @@ const ProductCard = ({ product, category }) => {
       </button>
 
       {/* Clickable Link Around Card Content */}
-      <Link href={`/${encodeURIComponent(category.toLowerCase())}/${product.id}`}>
+      {/* <Link href={`/${encodeURIComponent(category.toLowerCase())}/${product.id}`}> */}
+      <Link href={`/eyewear/${product.id}`}>
         <div className="p-2 flex flex-col items-center cursor-pointer">
           {/* Product Image */}
           <Image
