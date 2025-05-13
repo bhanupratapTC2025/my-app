@@ -1,128 +1,142 @@
 "use client";
-
 import React, { useState } from "react";
 
 const cityStores = [
   {
     city: "Mumbai",
-    cityMap:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120714.25419194254!2d72.7632162!3d19.0825223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c95ec73fce3f%3A0x1ff7e4b8d3b1e4e9!2sBandra%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    cityMap: "https://www.google.com/maps/embed?...",
     stores: [
-      {
-        id: 1,
-        name: "Mumbai Store 1",
-        address: "Bandra, Mumbai",
-        embedSrc:
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120714.25419194254!2d72.7632162!3d19.0825223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c95ec73fce3f%3A0x1ff7e4b8d3b1e4e9!2sBandra%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-      },
-      {
-        id: 4,
-        name: "Mumbai Store 2",
-        address: "Andheri, Mumbai",
-        embedSrc:
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120714.25419194254!2d72.8373263!3d19.1196777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b61cf3ba14c7%3A0x8b83210cce5a0c8b!2sAndheri%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin",
-      },
+      { id: 1, name: "Mumbai Store 1", address: "Bandra, Mumbai", embedSrc: "https://www.google.com/maps/embed?..." },
+      { id: 4, name: "Mumbai Store 2", address: "Andheri, Mumbai", embedSrc: "https://www.google.com/maps/embed?..." },
     ],
   },
   {
     city: "Delhi",
-    cityMap:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112096.17992869718!2d77.0922414!3d28.6315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5c4a8e1141%3A0x78a8e7be85cc99f5!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin",
+    cityMap: "https://www.google.com/maps/embed?...",
     stores: [
-      {
-        id: 2,
-        name: "Delhi Store",
-        address: "Connaught Place, Delhi",
-        embedSrc:
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112096.17992869718!2d77.0922414!3d28.6315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5c4a8e1141%3A0x78a8e7be85cc99f5!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin",
-      },
+      { id: 2, name: "Delhi Store", address: "Connaught Place, Delhi", embedSrc: "https://www.google.com/maps/embed?..." },
     ],
   },
   {
     city: "Pune",
-    cityMap:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119020.48805356345!2d73.8567!3d18.5362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c11b8e5ecce5%3A0x3f2e6d78c2ad6f4!2sKoregaon%20Park%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000003!5m2!1sen!2sin",
+    cityMap: "https://www.google.com/maps/embed?...",
     stores: [
-      {
-        id: 3,
-        name: "Pune Store",
-        address: "Koregaon Park, Pune",
-        embedSrc:
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119020.48805356345!2d73.8567!3d18.5362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c11b8e5ecce5%3A0x3f2e6d78c2ad6f4!2sKoregaon%20Park%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000003!5m2!1sen!2sin",
-      },
+      { id: 3, name: "Pune Store", address: "Koregaon Park, Pune", embedSrc: "https://www.google.com/maps/embed?..." },
     ],
   },
 ];
 
+const popularCities = ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata"];
+
 const StoreCity = () => {
-  const [expandedCity, setExpandedCity] = useState(cityStores[0].city);
-  const [selectedStore, setSelectedStore] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const handleCityClick = (city) => {
-    setExpandedCity(expandedCity === city ? null : city);
-    setSelectedStore(null);
+    const cityData = cityStores.find((c) => c.city === city);
+    if (cityData) {
+      setSelectedCity(cityData.city);
+      setSearchTerm("");
+    }
   };
 
-  const getCurrentCityData = cityStores.find((c) => c.city === expandedCity);
-  const mapToShow = selectedStore?.embedSrc || getCurrentCityData.cityMap;
+  const filteredCities = cityStores.filter((cityData) => {
+    const matchCity = cityData.city.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchStore = cityData.stores.some((store) =>
+      store.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    return matchCity || matchStore;
+  });
+
+  const activeCityData = cityStores.find((c) => c.city === selectedCity);
+
+  const mapSrc = activeCityData?.cityMap || "https://www.google.com/maps/embed?pb=!1m18!1m12...";
 
   return (
-    <div className="flex flex-col md:flex-row h-[600px] border rounded-lg overflow-hidden">
-      {/* Left Side - City and Stores */}
-      <div className="md:w-1/2 w-full p-4 bg-gray-50 overflow-y-auto">
-        <h2 className="text-2xl font-bold mb-4">Select a City</h2>
-        <ul className="space-y-3">
-          {cityStores.map((cityData) => (
-            <li key={cityData.city}>
-              <div
-                onClick={() => handleCityClick(cityData.city)}
-                className={`cursor-pointer p-3 border rounded-md ${
-                  expandedCity === cityData.city
-                    ? "bg-blue-100 border-blue-500"
-                    : "bg-white hover:bg-gray-100"
-                }`}
-              >
-                <strong>{cityData.city}</strong>
-              </div>
+    <div className="p-6 max-w-screen-xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6  text-gray-800">🗺️ Find Our Stores</h2>
 
-              {/* Stores Accordion */}
-              {expandedCity === cityData.city && (
-                <div className="mt-2 pl-4">
-                  {cityData.stores.map((store) => (
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Left Column */}
+        <div className="md:w-[35%] w-full space-y-4">
+          {/* Search Bar */}
+          <input
+            type="text"
+            placeholder="🔍 Search by city or store name..."
+            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 transition"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setSelectedCity(null);
+            }}
+          />
+
+          {/* Popular Cities */}
+          {!searchTerm && !selectedCity && (
+            <div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-700">📍 Popular Cities</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {popularCities.map((city) => (
+                  <div
+                    key={city}
+                    onClick={() => handleCityClick(city)}
+                    className="cursor-pointer bg-white border rounded-lg shadow hover:shadow-xl transition overflow-hidden hover:scale-[1.02]"
+                  >
+                    <img
+                      src={`https://source.unsplash.com/400x200/?${city}`}
+                      alt={city}
+                      className="w-full h-24 object-cover"
+                    />
+                    <div className="p-3 text-center">
+                      <h4 className="text-md font-semibold text-gray-800">{city}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Scrollable Store List */}
+          {(selectedCity || searchTerm) && (
+            <div className="mt-2">
+              <h3 className="text-xl font-semibold mb-3 text-gray-700">🏪 Available Stores</h3>
+              <div className="overflow-y-auto max-h-[450px] pr-2 custom-scrollbar space-y-4">
+                {(selectedCity ? activeCityData?.stores : filteredCities.flatMap((c) => c.stores))
+                  .filter((store) =>
+                    store.name.toLowerCase().includes(searchTerm.toLowerCase()) || selectedCity
+                  )
+                  .map((store) => (
                     <div
                       key={store.id}
-                      onClick={() => setSelectedStore(store)}
-                      className={`cursor-pointer p-2 border rounded-md my-2 ${
-                        selectedStore?.id === store.id
-                          ? "bg-green-100 border-green-500"
-                          : "bg-white hover:bg-gray-100"
-                      }`}
+                      className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col gap-2 hover:scale-[1.01]"
                     >
-                      {store.name}
-                      <div className="text-xs text-gray-500">
-                        {store.address}
-                      </div>
+                      <img
+                        src={`https://source.unsplash.com/400x200/?store,building,${store.name}`}
+                        alt={store.name}
+                        className="w-full h-32 object-cover rounded-md"
+                      />
+                      <h4 className="text-lg font-bold text-blue-800">{store.name}</h4>
+                      <p className="text-sm text-gray-600">{store.address}</p>
                     </div>
                   ))}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+              </div>
+            </div>
+          )}
+        </div>
 
-      {/* Right Side - Map Display */}
-      <div className="md:w-1/2 w-full">
-        <iframe
-          src={mapToShow}
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Location Map"
-        ></iframe>
+        {/* Right Column: Map */}
+        <div className="md:w-[65%] w-full">
+          <div className="w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-lg border">
+            <iframe
+              src={mapSrc}
+              width="100%"
+              height="100%"
+              allowFullScreen=""
+              loading="lazy"
+              className="w-full h-full border-0"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
   );
