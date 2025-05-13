@@ -1,15 +1,25 @@
+"use client";
 import Banner from "@/components/Banner";
+<<<<<<< HEAD
 import FilterSidebar from "@/components/main-products/FilterSidebar";
 import ProductFilter from "@/components/main-products/ProductFilter";
 import React, { Suspense } from "react";
+=======
 
-export default function sunglasses() {
+import ProductFilter from "@/components/sunglass/ProductFilter";
+
+import React from "react";
+>>>>>>> branch/bhed
+
+export default function Sunglasses() {
+
   return (
     <>
       <Banner
         title="Sunglasses"
         subtitle="Explore our stylish and protective sunglasses collection."
       />
+<<<<<<< HEAD
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sidebar on the left */}
@@ -34,6 +44,11 @@ export default function sunglasses() {
           </main>
         </div>
       </div>
+=======
+      <h1>Sunglasses</h1>
+      <p>This is the sunglasses page.</p>
+      <ProductFilter category="Sunglasses"/>
+>>>>>>> branch/bhed
     </>
   );
 }

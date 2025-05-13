@@ -27,7 +27,7 @@ const Slug = () => {
                 </Link>
                 {breadcrumbs.map((crumb, i) => (
                     <span key={i}>
-                        <span className="text-gray-400 mx-1">/</span>
+                        <span className="text-gray-400 mx-1">{'>'}</span>
                         <Link href={crumb.href} className="hover:underline text-indigo-600">
                             {crumb.name}
                         </Link>
