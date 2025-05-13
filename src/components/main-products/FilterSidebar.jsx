@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { IoMdClose } from 'react-icons/io';
+import { FaFilter } from 'react-icons/fa';
 
 export default function FilterSidebar({ currentCategory }) {
     const router = useRouter();
@@ -33,6 +35,8 @@ export default function FilterSidebar({ currentCategory }) {
         frameColor: ['Black', 'Blue', 'Red', 'Gold', 'Brown'],
         lensColor: ['Amber', 'Clear', 'Green', 'Blue', 'Gray']
     };
+
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
         const initialFilters = {};
@@ -77,43 +81,112 @@ export default function FilterSidebar({ currentCategory }) {
         router.push(`${pathname}?${params.toString()}`);
     };
 
-    // Clear all filters
     const handleClearAllFilters = () => {
         const params = new URLSearchParams();
         router.push(`${pathname}?${params.toString()}`);
     };
 
-    // Check if any filter is selected
     const isAnyFilterSelected = Object.values(selectedFilters).some(filters => filters.length > 0);
 
     return (
-        <div className="w-64 p-6 border-r bg-white sticky top-0 h-screen overflow-y-auto">
-            <h2 className="font-bold text-2xl mb-4 text-gray-800">Filters</h2>
+        <>
+            {/* Mobile Filter Toggle Button */}
+            <div className="lg:hidden flex justify-end px-4 py-2">
+                <button
+                    onClick={() => setMobileOpen(true)}
+                    className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-md shadow-md"
+                >
+                    <FaFilter className="text-lg" /> Filter
+                </button>
+            </div>
 
-            {/* Display Selected Filters */}
-            <div className="mb-6">
+            {/* Sidebar: Hidden on mobile, visible on large screens */}
+            <div className="hidden lg:block w-64 p-6 border-r bg-white sticky top-0 h-screen overflow-y-auto">
+                <SidebarContent
+                    categories={categories}
+                    currentCategory={currentCategory}
+                    selectedFilters={selectedFilters}
+                    filters={filters}
+                    handleCheckboxChange={handleCheckboxChange}
+                    handleFilterRemove={handleFilterRemove}
+                    handleClearAllFilters={handleClearAllFilters}
+                    isAnyFilterSelected={isAnyFilterSelected}
+                    pathname={pathname}
+                />
+            </div>
+
+            {/* Slide-in Mobile Sidebar */}
+            {mobileOpen && (
+                <div className="fixed inset-0 z-50 flex">
+                    {/* Overlay */}
+                    <div
+                        className="fixed inset-0 bg-black bg-opacity-40"
+                        onClick={() => setMobileOpen(false)}
+                    ></div>
+
+                    {/* Sidebar Panel */}
+                    <div className="relative z-50 w-72 bg-white p-6 overflow-y-auto h-full">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-xl font-bold text-gray-800">Filters</h2>
+                            <button onClick={() => setMobileOpen(false)} className="text-2xl text-gray-600">
+                                <IoMdClose />
+                            </button>
+                        </div>
+
+                        <SidebarContent
+                            categories={categories}
+                            currentCategory={currentCategory}
+                            selectedFilters={selectedFilters}
+                            filters={filters}
+                            handleCheckboxChange={handleCheckboxChange}
+                            handleFilterRemove={handleFilterRemove}
+                            handleClearAllFilters={handleClearAllFilters}
+                            isAnyFilterSelected={isAnyFilterSelected}
+                            pathname={pathname}
+                        />
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}
+
+// Sidebar Inner Content
+function SidebarContent({
+    categories,
+    currentCategory,
+    selectedFilters,
+    filters,
+    handleCheckboxChange,
+    handleFilterRemove,
+    handleClearAllFilters,
+    isAnyFilterSelected,
+    pathname
+}) {
+    return (
+        <div className="space-y-6">
+            {/* Applied Filters */}
+            <div>
                 <h3 className="font-semibold text-lg text-gray-700 mb-2">Applied Filters</h3>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-2">
                     {Object.entries(selectedFilters).map(([type, selectedValues]) =>
-                        selectedValues.map((value) => (
-                            <div key={`${type}-${value}`} className="flex items-center bg-blue-200 text-blue-800 p-2 rounded-lg">
-                                <span className="text-sm">{value}</span>
+                        selectedValues.map(value => (
+                            <div key={`${type}-${value}`} className="flex items-center bg-blue-200 text-blue-800 p-1 px-2 rounded-md text-sm">
+                                {value}
                                 <button
                                     onClick={() => handleFilterRemove(type, value)}
-                                    className="ml-2 text-blue-600 font-bold text-xs"
+                                    className="ml-2 text-blue-600 font-bold"
                                 >
-                                    X
+                                    ×
                                 </button>
                             </div>
                         ))
                     )}
                 </div>
-
-                {/* Clear All Filters Button */}
                 {isAnyFilterSelected && (
                     <button
                         onClick={handleClearAllFilters}
-                        className="mt-4 px-4 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 w-full"
+                        className="mt-2 text-sm text-white bg-red-500 px-4 py-1.5 rounded hover:bg-red-600 w-full"
                     >
                         Clear All Filters
                     </button>
@@ -121,14 +194,14 @@ export default function FilterSidebar({ currentCategory }) {
             </div>
 
             {/* Categories */}
-            <div className="mb-6">
+            <div>
                 <h3 className="font-semibold text-lg text-gray-700 mb-2">Categories</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                     {categories.map(cat => (
                         <li key={cat.name}>
                             <Link
                                 href={cat.path}
-                                className={`block p-2 rounded-lg text-sm ${currentCategory === cat.name.toLowerCase() ||
+                                className={`block p-2 rounded-md text-sm ${currentCategory === cat.name.toLowerCase() ||
                                     (pathname === '/' && cat.name === "All")
                                     ? 'bg-blue-100 text-blue-800 font-medium'
                                     : 'hover:bg-gray-100'
@@ -143,16 +216,16 @@ export default function FilterSidebar({ currentCategory }) {
 
             {/* Filters */}
             {Object.entries(filters).map(([type, options]) => (
-                <div key={type} className="mb-4">
-                    <h3 className="font-semibold capitalize text-lg text-gray-700 mb-2">
+                <div key={type}>
+                    <h3 className="font-semibold capitalize text-gray-700 mb-2">
                         {type.replace(/([A-Z])/g, ' $1').trim()}
                     </h3>
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         {options.map(option => (
-                            <label key={option} className="flex items-center space-x-2">
+                            <label key={option} className="flex items-center space-x-2 text-sm">
                                 <input
                                     type="checkbox"
-                                    className="rounded text-blue-600"
+                                    className="text-blue-600"
                                     checked={selectedFilters[type]?.includes(option)}
                                     onChange={() => handleCheckboxChange(type, option)}
                                 />

@@ -45,7 +45,7 @@ const StoreTopCard = () => {
           ></div>
 
           {/* Card Content */}
-          <div className="relative z-10 flex items-center">
+          <div className="relative z-1 flex items-center">
             <div className="mr-4">{card.icon}</div>
             <div>
               <h3 className="text-lg font-semibold">{card.title}</h3>
