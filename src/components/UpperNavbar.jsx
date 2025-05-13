@@ -89,13 +89,9 @@
 
 
 'use client';
-<<<<<<< HEAD
-import { useState, useEffect } from 'react';
-=======
 
 import { useState } from 'react';
 import Link from 'next/link';
->>>>>>> branch/bhed
 import { ChevronDown, Menu, Search } from 'lucide-react';
 
 // Menu configuration
@@ -126,92 +122,6 @@ const generateLink = ( heading, item) => {
 const slugify = (text) => text?.toLowerCase().replace(/\s+/g, '-');
 
 const UpperNavbar = () => {
-<<<<<<< HEAD
-    const [openDropdown, setOpenDropdown] = useState(null);
-    const [scrollDirection, setScrollDirection] = useState('up');
-    const [lastScrollY, setLastScrollY] = useState(0);
-
-    // Detect scroll direction
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > lastScrollY) {
-                // Downward scroll
-                setScrollDirection('down');
-            } else {
-                // Upward scroll
-                setScrollDirection('up');
-            }
-            setLastScrollY(window.scrollY);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY]);
-
-    return (
-        <div
-            className={`bg-white shadow-sm border-b border-gray-200 px-4 md:px-12 py-2 flex items-center justify-between text-gray-700 text-sm font-medium transition-transform duration-300 ${scrollDirection === 'down' ? '-translate-y-full' : ''
-                }`}
-        >
-            {/* Left: Any Query */}
-            <div className="hidden sm:block">
-                <span className="text-blue-600 hover:underline cursor-pointer">Any Query?</span>
-            </div>
-
-            <div className="flex-1 mx-4 sm:mx-8">
-                <div className="relative flex items-center w-full max-w-xs sm:max-w-md mx-auto transition-all rounded-full border border-gray-300 focus-within:ring-2 focus-within:ring-blue-400">
-                    <input
-                        type="text"
-                        placeholder="Search eyewear, lenses, etc."
-                        className="flex-1 px-4 py-1.5 rounded-l-full focus:outline-none"
-                    />
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-full transition-all">
-                        <Search className="w-6 h-4" />
-                    </button>
-                </div>
-            </div>
-
-            {/* Right Side: Menu Items */}
-            <div className="hidden md:flex items-center space-x-6">
-                {menuItems.map((item, index) => (
-                    <div
-                        key={index}
-                        className="relative "
-                        onMouseEnter={() => item.dropdown && setOpenDropdown(index)}
-                        onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
-                    >
-                        <button className="flex items-center hover:text-blue-600">
-                            {item.label}
-                            {item.dropdown && <ChevronDown className="ml-1 w-4 h-4" />}
-                        </button>
-
-                        {/* Dropdown menu */}
-                        {item.dropdown && openDropdown === index && (
-                            <div className="absolute right-0  border bg-white  rounded-md shadow-lg z-50 w-56">
-                                <ul className="py-2 text-left">
-                                    {item.dropdown.map((option, optIdx) => (
-                                        <li
-                                            key={optIdx}
-                                            className="px-4 py-2 hover:bg-blue-50 cursor-pointer"
-                                        >
-                                            {option}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-
-            {/* Mobile Menu Icon */}
-            <div className="md:hidden">
-                <Menu className="w-6 h-6 text-gray-700" />
-            </div>
-=======
   const [openDropdown, setOpenDropdown] = useState(null);
 
   return (
@@ -233,7 +143,6 @@ const UpperNavbar = () => {
           <button className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-full transition-all">
             <Search className="w-6 h-4" />
           </button>
->>>>>>> branch/bhed
         </div>
       </div>
 
