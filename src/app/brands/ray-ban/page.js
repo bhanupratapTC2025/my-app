@@ -1,10 +1,12 @@
-import Zerf from '@/components/brands/zerf/Zefr'
+import RayBan from '@/components/brands/rayban/RayBan'
+
+
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <Zerf/>
+      <RayBan/>
     </div>
   )
 }
