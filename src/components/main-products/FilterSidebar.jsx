@@ -29,7 +29,7 @@ export default function FilterSidebar({ currentCategory }) {
         gender: ['Men', 'Women', 'Unisex'],
         brand: ['RayBan', 'Oakley', 'Vogue', 'Titan', 'Fastrack', 'Zefr'],
         frameType: ['Full-Rim', 'Half-Rim', 'Rimless'],
-        material: ['Plastic', 'Metal', 'Titanium', 'Acetate'],
+        material: ['Plastic', 'Metal', 'Titanium', 'Acetate', 'TR90'],
         frameColor: ['Black', 'Blue', 'Red', 'Gold', 'Brown'],
         lensColor: ['Amber', 'Clear', 'Green', 'Blue', 'Gray']
     };

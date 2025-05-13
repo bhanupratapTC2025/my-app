@@ -4,7 +4,7 @@ import FilterSidebar from "@/components/main-products/FilterSidebar";
 import ProductFilter from "@/components/main-products/ProductFilter";
 import BestSeller from "@/components/main-products/BestSeller";
 
-export default function GenderEyeglassesPage() {
+export default function StyleEyeglassesPage() {
   const { type } = useParams();
 
   return (

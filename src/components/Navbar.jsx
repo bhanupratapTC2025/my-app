@@ -8,7 +8,7 @@ const dropdownData = {
     { heading: 'GENDER', items: ['All', 'Men', 'Women', 'Kids'] },
     { heading: 'COLLECTION', items: ['EyeX', 'Tees', 'Signature', 'Spiderman', 'Hipster'] },
     // { heading: 'SHAPE', items: ['Rectangle', 'Round', 'Cat Eye', 'Geometric', 'Wayfarer'] },
-    { heading: 'MATERIAL', items: ['Plastic', 'Metal', 'Titanium', 'Acetate'] },
+    { heading: 'MATERIAL', items: ['Plastic', 'Metal', 'Titanium', 'Acetate', 'TR90'] },
     { heading: 'STYLE', items: ['Full Rim', 'Half Rim', 'Rimless'] },
     // {
     //   heading: 'TOP BRANDS',
@@ -21,14 +21,18 @@ const dropdownData = {
   ],
   SUNGLASSES: [
     { heading: 'GENDER', items: ['All', 'Men', 'Women', 'Kids'] },
-    { heading: 'STYLE', items: ['Mirrored', 'Tinted', 'UV Protection', 'Polarized'] },
-    { heading: 'USAGE', items: ['Regular', 'Power'] },
-    { heading: 'Collection', items: ['Smart Sunglasses', 'Donald', 'Glow Up', 'Whiplash', 'Vivid Geometry'] },
-    { heading: 'SHAPE', items: ['Aviator', 'Wayfarer', 'Wraparound', 'Rectangle', 'Round'] },
-    {
-      heading: 'BRANDS',
-      items: ['Titan', 'Fastrack', 'Tees By Fastrack', 'Dash For Kids', 'Vogue Eyewear', 'Emporio Armani', 'Rayban', 'Burberry', 'Maui Jim', 'Ted Baker', 'Oakley'],
-    },
+    { heading: 'MATERIAL', items: ['Plastic', 'Metal', 'Titanium', 'Acetate', 'TR90'] },
+    { heading: 'STYLE', items: ['Full Rim', 'Half Rim', 'Rimless'] },
+    { heading: 'COLLECTION', items: ['EyeX', 'Tees', 'Signature', 'Spiderman', 'Hipster'] },
+
+    // { heading: 'STYLE', items: ['Mirrored', 'Tinted', 'UV Protection', 'Polarized'] },
+    // { heading: 'USAGE', items: ['Regular', 'Power'] },
+    // { heading: 'Collection', items: ['Smart Sunglasses', 'Donald', 'Glow Up', 'Whiplash', 'Vivid Geometry'] },
+    // { heading: 'SHAPE', items: ['Aviator', 'Wayfarer', 'Wraparound', 'Rectangle', 'Round'] },
+    // {
+    //   heading: 'BRANDS',
+    //   items: ['Titan', 'Fastrack', 'Tees By Fastrack', 'Dash For Kids', 'Vogue Eyewear', 'Emporio Armani', 'Rayban', 'Burberry', 'Maui Jim', 'Ted Baker', 'Oakley'],
+    // },
   ],
   ACCESSORIES: [
     {

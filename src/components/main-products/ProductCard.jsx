@@ -164,8 +164,12 @@ export default function ProductCard({ product, selectedFilters }) {
 
                 <span className="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded-full mt-2">
                     {product.gender}
-                </span>  <span className="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded-full mt-2">
+                </span>
+                <span className="text-xs bg-blue-200 text-purple-800 px-2 py-1 rounded-full mt-2">
                     {product.frameType}
+                </span>
+                <span className="text-xs bg-blue-200 text-red-800 px-2 py-1 rounded-full mt-2">
+                    {product.material}
                 </span>
 
                 <div className="mt-2 flex items-center gap-2">
