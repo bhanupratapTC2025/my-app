@@ -67,18 +67,18 @@ const Breadcrumb = () => {
     });
 
     return (
-        <div className="p-4  bg-gray-100 text-gray-800">
+        <div className="p-4 bg-gray-100 text-gray-800">
             <div className="text-sm">
                 <Link href="/" className="text-blue-600 font-bold hover:underline">
                     Home
                 </Link>
                 {crumbs}
             </div>
-            {mainSlug && (
+            {/* {mainSlug && (
                 <h2 className="text-xl text-blue-800 font-bold mt-4 capitalize">
                     {mainSlug}
                 </h2>
-            )}
+            )} */}
         </div>
     );
 };
