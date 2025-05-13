@@ -5,7 +5,7 @@ import Link from "next/link";
 import productData from "@/components/data/products.json";
 import { Heart } from "lucide-react";
 
-const selectedBrand = "Zefr";
+const selectedBrand = "RayBan";
 
 // Product Card Component
 const ProductCard = ({ product, category }) => {
@@ -67,7 +67,7 @@ const ProductCard = ({ product, category }) => {
 };
 
 // Main Component
-const ZefrAll = () => {
+const RayBanAll = () => {
   const sections = Object.entries(productData)
     .map(([categoryName, products]) => {
       const filteredProducts = products
@@ -118,4 +118,4 @@ const ZefrAll = () => {
   );
 };
 
-export default ZefrAll;
+export default RayBanAll;

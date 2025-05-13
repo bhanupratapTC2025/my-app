@@ -1,4 +1,4 @@
-const ZefrHead = () => {
+const RayBanHead = () => {
   return (
     <section className="w-full bg-gray-100 py-10">
       <div className="max-w-screen-xl mx-auto px-4">
@@ -12,4 +12,4 @@ const ZefrHead = () => {
   );
 };
 
-export default ZefrHead;
+export default RayBanHead;
