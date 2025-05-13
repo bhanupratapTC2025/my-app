@@ -155,7 +155,7 @@ const steps = [
 
 const mockOrders = {
   '9876543210': 2,
-  'AWB123456': 5,
+  'AWB123456': 3,
   'OID98765': 4,
 };
 
