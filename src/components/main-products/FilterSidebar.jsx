@@ -101,7 +101,7 @@ export default function FilterSidebar({ currentCategory }) {
             </div>
 
             {/* Sidebar: Hidden on mobile, visible on large screens */}
-            <div className="hidden lg:block w-64 p-6 border-r bg-white sticky top-0 h-screen overflow-y-auto">
+            <div className="hidden lg:block w-64  p-6 border-r bg-white sticky top-0 h-screen overflow-y-auto">
                 <SidebarContent
                     categories={categories}
                     currentCategory={currentCategory}
@@ -117,7 +117,7 @@ export default function FilterSidebar({ currentCategory }) {
 
             {/* Slide-in Mobile Sidebar */}
             {mobileOpen && (
-                <div className="fixed inset-0 z-50 flex">
+                <div className="fixed  inset-0 z-10 mt-16 flex">
                     {/* Overlay */}
                     <div
                         className="fixed inset-0 bg-black bg-opacity-40"
@@ -125,7 +125,7 @@ export default function FilterSidebar({ currentCategory }) {
                     ></div>
 
                     {/* Sidebar Panel */}
-                    <div className="relative z-50 w-72 bg-white p-6 overflow-y-auto h-full">
+                    <div className="relative left-0 z-50 w-72 bg-white p-6 overflow-y-auto h-full">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-bold text-gray-800">Filters</h2>
                             <button onClick={() => setMobileOpen(false)} className="text-2xl text-gray-600">

@@ -86,7 +86,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-10 bg-white shadow-md">
+    <nav className="sticky w-full top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="text-xl font-bold text-indigo-700">
           Techcherry <span className="text-gray-800">Eye+</span>

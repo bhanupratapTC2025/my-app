@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import UpperNavbar from "@/components/UpperNavbar";
-import Navbar from "@/components/Navbar";
 import Breadcrumb from "@/components/Breadcrumb";
+import Footer from "@/components/navbar/Footer";
+import UpperNavbar from "@/components/navbar/UpperNavbar";
+import Navbar from "@/components/navbar/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           <Breadcrumb />
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
