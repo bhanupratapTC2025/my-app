@@ -29,7 +29,7 @@ export default function FilterSidebar({ currentCategory }) {
 
     const filters = {
         gender: ['Men', 'Women', 'Unisex'],
-        brand: ['RayBan', 'Oakley', 'Vogue', 'Titan', 'Fastrack', 'Zefr'],
+        brand: ['RayBan', 'Oakley', 'Vogue', 'Titan', 'Fastrack', 'Zefr','carrera'],
         frameType: ['Full-Rim', 'Half-Rim', 'Rimless'],
         material: ['Plastic', 'Metal', 'Titanium', 'Acetate', 'TR90'],
         frameColor: ['Black', 'Blue', 'Red', 'Gold', 'Brown'],
@@ -91,17 +91,17 @@ export default function FilterSidebar({ currentCategory }) {
     return (
         <>
             {/* Mobile Filter Toggle Button */}
-            <div className="lg:hidden flex justify-end px-4 py-2">
+            <div className="lg:hidden hidden  justify-end px-4 py-2">
                 <button
                     onClick={() => setMobileOpen(true)}
                     className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-md shadow-md"
                 >
-                    <FaFilter className="text-lg" /> Filter
+                    <FaFilter className="text-lg " /> Filter
                 </button>
             </div>
 
             {/* Sidebar: Hidden on mobile, visible on large screens */}
-            <div className="hidden lg:block w-64  p-6 border-r bg-white sticky top-0 h-screen overflow-y-auto">
+            <div className="hidden lg:block w-64  p-6 border-r bg-white sticky top-0 h-120 overflow-y-auto">
                 <SidebarContent
                     categories={categories}
                     currentCategory={currentCategory}
@@ -117,7 +117,7 @@ export default function FilterSidebar({ currentCategory }) {
 
             {/* Slide-in Mobile Sidebar */}
             {mobileOpen && (
-                <div className="fixed  inset-0 z-10 mt-16 flex">
+                <div className="fixed hidden inset-0 z-10 mt-16 ">
                     {/* Overlay */}
                     <div
                         className="fixed inset-0 bg-black bg-opacity-40"
@@ -125,9 +125,9 @@ export default function FilterSidebar({ currentCategory }) {
                     ></div>
 
                     {/* Sidebar Panel */}
-                    <div className="relative left-0 z-50 w-72 bg-white p-6 overflow-y-auto h-full">
+                    <div className="relative  left-0 z-50 w-72 bg-white p-6 overflow-y-auto h-full">
                         <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-bold text-gray-800">Filters</h2>
+                            <h2 className="text-xl  font-bold text-gray-800">Filters</h2>
                             <button onClick={() => setMobileOpen(false)} className="text-2xl text-gray-600">
                                 <IoMdClose />
                             </button>

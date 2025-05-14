@@ -38,14 +38,15 @@ const dropdownData = {
     {
       heading: '',
       items: ["Swimming Goggles",
-        "Contact Lens Solution",
+        // "Contact Lens Solution",
         "Charger",
-        "Solar Eclipse Goggles",
+        // "Solar Eclipse Goggles",
         "Wipes",
         "Face Masks",
-        "Binoculars",
+        // "Binoculars",
         "Packaging Case",
-        "Chains",],
+        "Chains"
+      ]
     },
   ],
   BRANDS: [
@@ -55,13 +56,14 @@ const dropdownData = {
         "Titan",
         "Fastrack",
         "Zefr",
+        "Carrera",
         "Vogue Eyewear",
         "Ray Ban",
-        "Maui Jim",
-        "Ted-Baker",
-        "Tees By Fastrack",
-        "Acuvue By J&J",
-        "Bausch And Lomb",
+        // "Maui Jim",
+        // "Ted-Baker",
+        // "Tees By Fastrack",
+        // "Acuvue By J&J",
+        // "Bausch And Lomb",
         "Zeiss",
       ]
 
@@ -69,7 +71,9 @@ const dropdownData = {
   ],
 };
 
-const navItems = ['EYEGLASSES', 'SUNGLASSES', 'POWER SUNGLASSES', 'COMPUTER GLASSES', 'HEARING AIDS', 'CONTACT LENSES', 'ACCESSORIES', 'BRANDS'];
+const navItems = ['EYEGLASSES', 'SUNGLASSES', 'POWER SUNGLASSES', 'COMPUTER GLASSES', 'HEARING AIDS',
+  //'CONTACT LENSES',
+  'ACCESSORIES', 'BRANDS'];
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);

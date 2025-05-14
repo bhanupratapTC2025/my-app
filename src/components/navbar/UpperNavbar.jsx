@@ -24,8 +24,8 @@ const menuItems = [
 ];
 
 // Generate dynamic route
-const generateLink = ( heading, item) => {
-  
+const generateLink = (heading, item) => {
+
   const head = heading?.toLowerCase().replace(/\s+/g, '-');
   const it = item?.toLowerCase().replace(/\s+/g, '-');
   return `/${head}/${it}`;
@@ -38,7 +38,7 @@ const UpperNavbar = () => {
 
   return (
     <div className="bg-white shadow-sm border-b border-gray-200 px-4 md:px-12 py-2 flex items-center justify-between text-gray-700 text-sm font-medium">
-      
+
       {/* Left: Any Query */}
       <div className="hidden sm:block">
         <span className="text-blue-600 hover:underline cursor-pointer">Any Query?</span>
@@ -86,7 +86,7 @@ const UpperNavbar = () => {
                   {item.dropdown.map((option, optIdx) => (
                     <li key={optIdx}>
                       <Link
-                       href={generateLink(item.label, option)}
+                        href={generateLink(item.label, option)}
                         className="block px-4 py-2 hover:bg-blue-50"
                       >
                         {option}

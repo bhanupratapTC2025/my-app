@@ -58,6 +58,11 @@ export default function ProductFilter({ category, gender, frameType, material })
             setFilteredProducts(filtered);
             setIsLoading(false);
         }, 300);
+        console.log("Category:", category);
+        console.log("Filters:", filters);
+        console.log("Products in category:", categoryProducts);
+        console.log("Filtered Products:", filtered);
+
 
         return () => clearTimeout(timer);
     }, [searchParams.toString(), category, gender, frameType, material]);
